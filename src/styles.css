@@ -1,1 +1,311 @@
 /* You can add global styles to this file, and also import other style files */
+/*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Bootstrap 4 breakpoints
+*/
+
+/*
+Extra small devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap because it is "mobile first"
+*/
+
+body, html {
+  height: 100%;
+}
+
+/* hide the blue outline */
+.form-control:focus {
+  outline: 0 !important;
+  border-color: initial;
+  box-shadow: none;
+}
+
+.ms-n5 {
+  z-index: 3;
+  margin-right: -40px;
+}
+
+#search-bar input {
+  z-index: 1;
+  padding-left: 50px;
+}
+
+.email-section {
+  padding-top: 30px;
+}
+
+#email-nav {
+  background-color: #413e38;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+#welcome {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+}
+
+#user-msg {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+#user-img {
+  width: 40px;
+}
+
+#email-list {
+  background-color: #f4f3ef;
+  padding: 30px 15px;
+}
+
+#email-list h7 {
+  font-weight: bold;
+}
+
+#search-btn:hover {
+  background-color: #413e38;
+}
+
+#search-input {
+  font-size: 14px;
+}
+
+#email-body {
+  background-color: white;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 100px;
+  color: #413e38;
+  display: flex;
+  flex-direction: column;
+}
+
+#to, #from, #content {
+  opacity: 0.8;
+}
+
+#to, #from {
+  font-size: 11px;
+}
+
+#from {
+  margin-bottom: 30px;
+}
+
+#email-title-bar {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: baseline;
+}
+
+#email-title-bar h4 {
+  margin-right: auto;
+}
+
+#email-title-bar i {
+  margin-right: 20px;
+  opacity: 0.5;
+}
+
+#email-title-bar i:hover {
+  opacity: 1;
+}
+
+#content {
+  font-size: 1.1rem;
+  margin-bottom: 100px;
+}
+
+#content p {
+  margin-bottom: 25px;
+}
+
+#reply {
+  margin-top: auto;
+  border: 1px solid #413e38;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+#reply-text {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  resize: none;
+  color: #413e38
+}
+
+#reply-bar {
+  display: flex;
+}
+
+#paperclip-icon {
+  opacity: 0.3;
+}
+
+#paperclip-icon:hover {
+  opacity: 1;
+}
+
+#reply-btn {
+  margin-left: auto;
+  border: 2px solid #dcb353;
+  font-size: 14px;
+  font-weight: bold;
+  color: #dcb353;
+  width: 90px;
+}
+
+#reply-btn:hover {
+  color: white;
+  background-color: #dcb353;
+}
+
+#reply-btn:active {
+  color: #dcb353;
+  background-color: white;
+}
+
+#compose-btn {
+  background-color: #dcb353;
+  color: white;
+  width: 100%;
+  margin-bottom: 80px;
+  border: 1px solid white;
+}
+
+#compose-btn:hover {
+  background-color: #7c796a;
+  color: #dcb353;
+  border-color: #dcb353;
+}
+
+#compose-btn:active {
+  background-color: #dcb353;;
+  color: white;
+  border-color: white;
+}
+
+ul { padding-left: 0; margin-bottom: 50px; }
+ul li {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+li a:hover {
+  color: white;
+}
+
+.list-group-item {
+  z-index: 2;
+  color: #413e38;
+  opacity: 0.8;
+  background-color: #f4f3ef;
+  border: 1px solid #f4f3ef;
+  margin: 15px 0 0 0;
+  padding: 15px 30px 15px 30px;
+  font-size: 14px;
+  box-shadow: #f4f3ef 0px 6px 12px -2px, #f4f3ef 0px 3px 7px -3px;
+
+}
+
+.list-group-item:hover {
+  opacity: 1;
+  z-index: 2;
+  color: #413e38;
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.list-group-item:active {
+  z-index: 2;
+  color: #413e38;
+  background-color: white;
+  box-shadow: #f4f3ef 0px 6px 12px -2px, #f4f3ef 0px 3px 7px -3px;
+  border: 1px solid lightgray;
+
+}
+
+.list-group-item small {
+  text-align: end;
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+
+  #compose-btn {
+      margin-bottom: 40px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (max-width: 768px) {
+  #welcome {
+      text-align: center;
+      margin-bottom: 40px;
+  }
+
+  #compose-btn {
+      float: none;
+      width: 100%;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 575px) {
+  ul li {
+      display: inline-block;
+      padding: 10px;
+      margin-bottom: 0px;
+  }
+
+  ul > li:first-child {
+      padding-left: 0;
+  }
+
+  ul > li:last-child {
+      padding-right: 0;
+  }
+
+  ul {
+      display: inline-block;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 10px;
+  }
+
+  #welcome {
+      float: left;
+      margin-bottom: 0;
+  }
+
+  #compose-btn {
+      width: 39%;
+      margin-bottom: 15px;
+      float: right;
+  }
+
+  #email-list {
+      height: 290px;
+      overflow: auto;
+  }
+
+}
