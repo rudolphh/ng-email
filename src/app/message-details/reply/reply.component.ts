@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 
 @Component({
-  selector: 'app-reply',
+  selector: '[app-reply]',
   templateUrl: './reply.component.html',
   styleUrls: ['./reply.component.css']
 })

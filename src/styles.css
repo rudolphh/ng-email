@@ -74,6 +74,10 @@ body, html {
     font-size: 14px;
 }
 
+#email-list h6.mb-1 {
+  margin-bottom: 0.4rem!important;
+}
+
 #search-btn:hover {
     background-color: #413e38;
 }
