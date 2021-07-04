@@ -1,7 +1,13 @@
 <div class="container-fluid h-100">
   <div class="row justify-content-center h-100">
-    <app-nav></app-nav>
-    <app-messages></app-messages>
-    <app-message-details></app-message-details>
+    <div id="email-nav" class="email-section col-12 col-sm-4 col-md-4 col-lg-3 col-xl-2">
+      <app-nav></app-nav>
+    </div>
+    <div id="email-list" class="email-section col-12 col-sm-8 col-md-8 col-lg-9 col-xl-4">
+      <app-messages></app-messages>
+    </div>
+    <div id="email-body" class="email-section col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+      <app-message-details></app-message-details>
+    </div>
   </div>
 </div>
