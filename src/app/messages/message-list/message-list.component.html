@@ -1,23 +1,10 @@
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+<div class="list-group" *ngFor="let email of emails; let i = index">
+  <a (click)="selectMessage(i, email)" [ngClass]="{ 'selectedMessage' : isSelected(i) }" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">LinkedIn</h6>
-      <small>02:45pm</small>
+      <h6 class="mb-1">{{ email.title }} </h6>
+      <small>{{ isSameDay(email.date!, today) ? (email.date | date: 'shortTime') : ( email.date | date: 'shortDate') }}</small>
     </div>
-    <p class="mb-1">You have a new connection request</p>
+    <p class="mb-1">{{ (email.content | slice:0:54) + (email.content!.length < 54 ? '' : ' ...') }}</p>
   </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">Michael Scott Daily Quotes</h6>
-      <small>Jul 3, 2020</small>
-    </div>
-    <p class="mb-1">I'm optimistic because every day I get a little more desp...</p>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">LaMar Software</h6>
-      <small>Feb 9, 2020</small>
-    </div>
-    <p class="mb-1">Learn how you can give us money by calling (209) 322-7...</p>
-  </a>
+
 </div>

@@ -5,10 +5,10 @@
   </div>
       <button id="compose-btn" class="btn" >COMPOSE</button>
   <ul>
-      <li><a href="#"><strong>Inbox (1)</strong></a></li>
-      <li><a href="#">Tagged</a></li>
-      <li><a href="#">Important</a></li>
-      <li><a href="#">Sent Mail</a></li>
-      <li><a href="#">Drafts</a></li>
-      <li><a href="#">Trash</a></li>
+      <li><a href="#" [ngClass]="{ 'nav-list-highlight' : isActive(1) }" (click)="clicked(1)">Inbox (1)</a></li>
+      <li><a href="#" [ngClass]="{ 'nav-list-highlight' : isActive(2) }" (click)="clicked(2)">Important</a></li>
+      <li><a href="#" [ngClass]="{ 'nav-list-highlight' : isActive(3) }" (click)="clicked(3)">Tagged</a></li>
+      <li><a href="#" [ngClass]="{ 'nav-list-highlight' : isActive(4) }" (click)="clicked(4)">Sent Mail</a></li>
+      <li><a href="#" [ngClass]="{ 'nav-list-highlight' : isActive(5) }" (click)="clicked(5)">Drafts</a></li>
+      <li><a href="#" [ngClass]="{ 'nav-list-highlight' : isActive(6) }" (click)="clicked(6)">Trash</a></li>
   </ul>

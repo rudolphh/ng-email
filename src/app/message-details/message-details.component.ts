@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { EmailService } from "../email.service";
+import { Email } from "../_models/email.model";
 
 
 @Component({
@@ -8,7 +11,30 @@ import { Component, OnInit } from "@angular/core";
 })
 export class MessageDetailsComponent implements OnInit {
 
-  constructor() {}
+  message$ !: Observable<Email>;
 
-  ngOnInit(): void {}
+  constructor(private emailService: EmailService) {}
+
+  ngOnInit(): void {
+    this.message$ = this.emailService.currentMessage;
+  }
+
+  replaceBreaksWithParagraphs(input: string) {
+    input = this.filterEmpty(input.split('\n')).join('</p><p>');
+    return '<p>' + input + '</p>';
+  }
+
+  filterEmpty(arr : string[]) {
+    var new_arr = [];
+
+    for (var i = arr.length-1; i >= 0; i--)
+    {
+        if (arr[i] != "")
+            new_arr.push(arr.pop());
+        else
+            arr.pop();
+    }
+
+    return new_arr.reverse();
+  };
 }

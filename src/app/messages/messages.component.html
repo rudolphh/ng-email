@@ -1,2 +1,2 @@
   <app-searchbar></app-searchbar>
-  <app-message-list></app-message-list>
+  <app-message-list [emails]="emails" (selectMessageEvent)="setSelectedMessage($event)"></app-message-list>

@@ -46,6 +46,13 @@ body, html {
     padding-right: 40px;
 }
 
+.nav-list-highlight {
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #dcb353;
+}
+
 #welcome {
     color: white;
     font-size: 14px;
@@ -215,13 +222,13 @@ li a {
 }
 
 li a:hover {
-    color: white;
+    color: #dcb353;
 }
 
 .list-group-item {
     z-index: 2;
     color: #413e38;
-    opacity: 0.8;
+    opacity: 0.7;
     background-color: #f4f3ef;
     border: 1px solid #f4f3ef;
     margin: 15px 0 0 0;
@@ -246,7 +253,13 @@ li a:hover {
     background-color: white;
     box-shadow: #f4f3ef 0px 6px 12px -2px, #f4f3ef 0px 3px 7px -3px;
     border: 1px solid lightgray;
+}
 
+.selectedMessage {
+  opacity: 1 !important;
+  background-color: white !important;
+  border: 1px solid lightgray !important;
+  box-shadow: #f4f3ef 0px 6px 12px -2px, #f4f3ef 0px 3px 7px -3px !important;
 }
 
 .list-group-item small {
