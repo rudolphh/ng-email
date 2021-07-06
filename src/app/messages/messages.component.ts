@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { EmailService } from '../email.service';
 import { Email } from '../_models/email.model';
 
@@ -11,28 +11,23 @@ import { Email } from '../_models/email.model';
 
 export class MessagesComponent implements OnInit {
 
-  inboxSubscription !: Subscription;
+  subscription !: Subscription;
 
   emails : Email[] = [];
 
   constructor(private emailService: EmailService){}
 
   ngOnInit(): void {
-    this.inboxSubscription = this.emailService.inbox.subscribe((emails) => {
-      this.emailService.newSearch(emails);
-      //this.setSelectedMessage(emails[0]);
-    });
-
-    this.emailService.filteredMessages$.subscribe((emails) => this.emails = emails);
+    this.emailService.displayedMessages$.subscribe((emails) => this.emails = emails);
   }
 
   setSelectedMessage(message: Email) {
-    this.emailService.changeMessage(message);
+    this.emailService.selectMessage(message);
   }
 
   ngOnDestroy(): void {
-    if(this.inboxSubscription){
-      this.inboxSubscription.unsubscribe();
+    if(this.subscription){
+      this.subscription.unsubscribe();
     }
   }
 }

@@ -19,7 +19,7 @@ export class MessageDetailsComponent implements OnInit {
       (message: Email) => (this.message = message)
     );
     this.emailService.isNewSearch$.subscribe((isNew) => {
-      if (isNew) this.emailService.changeMessage({});
+      if (isNew) this.emailService.selectMessage({});
     });
   }
 

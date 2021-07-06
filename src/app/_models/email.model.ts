@@ -5,4 +5,5 @@ export interface Email {
   from ?: string;
   title ?: string;
   content ?: string;
+  important ?: boolean;
 }
