@@ -5,10 +5,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Mock API Server & Development server
 
 Install [JSON Server](https://www.npmjs.com/package/json-server)
-`npm install -g json-server`
+`npm install -g json-server`. 
 Navigate to the `db-json/` director and run `json-server --watch db.json`
 
-The data collections will be served at `http://localhost:3000`
+The data collections will be served at `http://localhost:3000`. 
 example: `http://localhost:3000/inbox` will return the collection of inbox email objects. 
 
 Then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
