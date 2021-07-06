@@ -3,18 +3,27 @@
   <div id="from">From: {{ message.from }}</div>
 
   <div id="email-title-bar">
-      <h4>{{ message.title }}</h4>
-      <i class="fa fa-trash"></i>
-      <i class="fa fa-reply"></i>
-      <i class="fa fa-ellipsis-h"></i>
+    <h4>{{ message.title }}</h4>
+    <i class="fa fa-trash"></i>
+    <i class="fa fa-reply"></i>
+    <i class="fa fa-ellipsis-h"></i>
   </div>
-  <div id="content" [innerHTML]="replaceBreaksWithParagraphs(message.content!)">
-  </div>
+  <div
+    id="content"
+    [innerHTML]="replaceBreaksWithParagraphs(message.content!)"
+  ></div>
 
   <div app-reply id="reply"></div>
 </ng-container>
 <ng-template #noMessages>
-  <hr>
-  <div style="display: flex; justify-content: center; font-style: italic; ">No Message Selected</div>
-  <hr>
+  <i
+    class="fa fa-envelope fa-5x"
+    aria-hidden="true"
+    style="text-align: center; margin-top: 50px"
+  ></i>
+  <hr />
+  <div style="display: flex; justify-content: center; font-style: italic">
+    No Message Selected
+  </div>
+  <hr />
 </ng-template>
