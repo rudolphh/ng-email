@@ -1,5 +1,6 @@
 import { EventEmitter, Output } from "@angular/core";
 import { Component, Input, OnInit } from "@angular/core";
+import { EmailService } from "src/app/email.service";
 import { Email } from "src/app/_models/email.model";
 
 @Component({
@@ -16,9 +17,14 @@ export class MessageListComponent implements OnInit {
   selectedIndex : number = -1;
   today = new Date(Date.now()).toISOString();
 
-  constructor() { }
+  constructor(private emailService: EmailService) { }
 
   ngOnInit(): void {
+    this.emailService.isNewSearch$.subscribe((isNew) => {
+      if(isNew) {
+        this.selectedIndex = -1;
+      }
+    })
   }
 
   isSameDay(d1: string, d2: string) {

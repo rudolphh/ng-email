@@ -19,11 +19,11 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.inboxSubscription = this.emailService.inbox.subscribe((emails) => {
-      this.emailService.setFilteredMessages(emails);
+      this.emailService.newSearch(emails);
       //this.setSelectedMessage(emails[0]);
     });
 
-    this.emailService.filteredMessages.subscribe((emails) => this.emails = emails);
+    this.emailService.filteredMessages$.subscribe((emails) => this.emails = emails);
   }
 
   setSelectedMessage(message: Email) {
