@@ -11,7 +11,6 @@ import { Email } from '../_models/email.model';
 
 export class MessagesComponent implements OnInit {
 
-  inboxEmails$ !: Observable<Email[]>;
   inboxSubscription !: Subscription;
 
   emails : Email[] = [];
@@ -19,11 +18,12 @@ export class MessagesComponent implements OnInit {
   constructor(private emailService: EmailService){}
 
   ngOnInit(): void {
-    this.inboxEmails$ = this.emailService.inbox;
-    this.inboxSubscription = this.inboxEmails$.subscribe((emails) => {
-      this.emails = emails;
-      this.setSelectedMessage(emails[0]);
-    })
+    this.inboxSubscription = this.emailService.inbox.subscribe((emails) => {
+      this.emailService.setFilteredMessages(emails);
+      //this.setSelectedMessage(emails[0]);
+    });
+
+    this.emailService.filteredMessages.subscribe((emails) => this.emails = emails);
   }
 
   setSelectedMessage(message: Email) {

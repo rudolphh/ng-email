@@ -13,7 +13,7 @@ export class MessageListComponent implements OnInit {
   @Input() emails : Email[] | null = [];
   @Output() selectMessageEvent = new EventEmitter<Email>();
 
-  selectedIndex : number = 0;
+  selectedIndex : number = -1;
   today = new Date(Date.now()).toISOString();
 
   constructor() { }
@@ -38,5 +38,9 @@ export class MessageListComponent implements OnInit {
 
   isSelected(index: number) {
     return index === this.selectedIndex;
+  }
+
+  public trackItem (index: number, item: Email) {
+    return item.id;
   }
 }

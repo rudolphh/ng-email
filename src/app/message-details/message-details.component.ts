@@ -12,16 +12,20 @@ import { Email } from "../_models/email.model";
 export class MessageDetailsComponent implements OnInit {
 
   message$ !: Observable<Email>;
+  message !: Email;
 
   constructor(private emailService: EmailService) {}
 
   ngOnInit(): void {
-    this.message$ = this.emailService.currentMessage;
+    this.emailService.currentMessage.subscribe((message: Email) => this.message = message);
   }
 
   replaceBreaksWithParagraphs(input: string) {
-    input = this.filterEmpty(input.split('\n')).join('</p><p>');
-    return '<p>' + input + '</p>';
+    if(input){
+      input = this.filterEmpty(input.split('\n')).join('</p><p>');
+      return '<p>' + input + '</p>';
+    }
+    return '';
   }
 
   filterEmpty(arr : string[]) {
@@ -37,4 +41,8 @@ export class MessageDetailsComponent implements OnInit {
 
     return new_arr.reverse();
   };
+
+  isEmptyObject(obj : Object) {
+    return (obj && (Object.keys(obj).length === 0));
+  }
 }

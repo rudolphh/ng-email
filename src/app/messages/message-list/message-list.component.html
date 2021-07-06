@@ -1,10 +1,15 @@
-<div class="list-group" *ngFor="let email of emails; let i = index">
-  <a (click)="selectMessage(i, email)" [ngClass]="{ 'selectedMessage' : isSelected(i) }" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h6 class="mb-1">{{ email.title }} </h6>
-      <small>{{ isSameDay(email.date!, today) ? (email.date | date: 'shortTime') : ( email.date | date: 'shortDate') }}</small>
-    </div>
-    <p class="mb-1">{{ (email.content | slice:0:54) + (email.content!.length < 54 ? '' : ' ...') }}</p>
-  </a>
-
-</div>
+<ng-container *ngIf="emails!.length > 0; else noResults ">
+  <div class="list-group" *ngFor="let email of emails; let i = index; trackBy: trackItem">
+    <a (click)="selectMessage(i, email)" [ngClass]="{ 'selectedMessage' : isSelected(i) }" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1">{{ email.title }} </h6>
+        <small>{{ isSameDay(email.date!, today) ? (email.date | date: 'shortTime') : ( email.date | date: 'shortDate') }}</small>
+      </div>
+      <p class="mb-1">{{ (email.content | slice:0:54) + (email.content!.length < 54 ? '' : ' ...') }}</p>
+    </a>
+  </div>
+</ng-container>
+<ng-template #noResults>
+  <hr>
+  <p style="display: flex; justify-content: center; margin-top: 15px; font-style: italic; font-size: 14px;">No Results Found</p>
+</ng-template>

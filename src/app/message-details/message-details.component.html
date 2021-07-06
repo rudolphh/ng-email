@@ -1,4 +1,4 @@
-<ng-container *ngIf="message$ | async as message">
+<ng-container *ngIf="!isEmptyObject(message); else noMessages">
   <div id="to">To: {{ message.to }}</div>
   <div id="from">From: {{ message.from }}</div>
 
@@ -13,3 +13,7 @@
 
   <div app-reply id="reply"></div>
 </ng-container>
+<ng-template #noMessages>
+  <div style="display: flex; justify-content: center; font-style: italic; ">No Message Selected</div>
+  <hr>
+</ng-template>

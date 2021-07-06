@@ -9,6 +9,10 @@ import { Email } from "./_models/email.model";
 export class EmailService {
 
   private API_URL: string = 'http://localhost:3000';
+
+  private filteredMessagesSource = new BehaviorSubject<Email[]>([]);
+  filteredMessages = this.filteredMessagesSource.asObservable();
+
   private messageSource = new BehaviorSubject<Email>({});
   currentMessage = this.messageSource.asObservable();
 
@@ -20,5 +24,9 @@ export class EmailService {
 
   changeMessage(message: Email) {
     this.messageSource.next(message)
+  }
+
+  setFilteredMessages(messages: Email[]){
+    this.filteredMessagesSource.next(messages);
   }
 }
