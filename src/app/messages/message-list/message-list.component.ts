@@ -1,7 +1,8 @@
 import { EventEmitter, Output } from "@angular/core";
 import { Component, Input, OnInit } from "@angular/core";
-import { EmailService } from "src/app/email.service";
+import { EmailService } from "src/app/_services/email.service";
 import { Email } from "src/app/_models/email.model";
+import { DataService } from "src/app/_services/data.service";
 
 @Component({
   selector: 'app-message-list',
@@ -17,10 +18,10 @@ export class MessageListComponent implements OnInit {
   selectedIndex : number = -1;
   today = new Date(Date.now()).toISOString();
 
-  constructor(private emailService: EmailService) { }
+  constructor(private emailService: EmailService, private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.emailService.isNewSearch$.subscribe((isNew) => {
+    this.dataService.isNewSearch$.subscribe((isNew) => {
       if(isNew) {
         this.selectedIndex = -1;
       }

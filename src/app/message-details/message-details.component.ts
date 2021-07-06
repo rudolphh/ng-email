@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailService } from '../email.service';
+import { EmailService } from '../_services/email.service';
 import { Email } from '../_models/email.model';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: '[app-message-details]',
@@ -10,16 +11,16 @@ import { Email } from '../_models/email.model';
 export class MessageDetailsComponent implements OnInit {
   message!: Email;
 
-  constructor(private emailService: EmailService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
 
-    this.emailService.currentMessage$.subscribe(
+    this.dataService.currentMessage$.subscribe(
       (message: Email) => (this.message = message)
     );
 
-    this.emailService.isNewSearch$.subscribe((isNew) => {
-      if (isNew) this.emailService.selectMessage({});
+    this.dataService.isNewSearch$.subscribe((isNew) => {
+      if (isNew) this.dataService.selectMessage({});
     });
   }
 

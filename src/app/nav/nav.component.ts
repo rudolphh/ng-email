@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { EmailService } from '../email.service';
+import { DataService } from '../_services/data.service';
+import { EmailService } from '../_services/email.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
 
   activeIndex : number = 1;
 
-  constructor(private emailService: EmailService) { }
+  constructor(private emailService: EmailService, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.setInbox(this.activeIndex);
@@ -19,44 +20,45 @@ export class NavComponent implements OnInit {
 
   setInbox(index: number){
     this.activeIndex = index;
+    this.dataService.resetSearchText();
 
     switch(this.activeIndex) {
       case 1:
         this.emailService.inbox.subscribe((inboxEmails) => {
-          this.emailService.setCollectionMessages(inboxEmails);
-          this.emailService.setDisplayedMessages(inboxEmails)
+          this.dataService.setCollectionMessages(inboxEmails);
+          this.dataService.setDisplayedMessages(inboxEmails)
         });
         break;
       case 2:
         this.emailService.inbox.subscribe((inboxEmails) => {
-          this.emailService.setCollectionMessages(inboxEmails);
           var filteredEmails = inboxEmails.filter(email => email.important);
-          this.emailService.setDisplayedMessages(filteredEmails);
+          this.dataService.setCollectionMessages(filteredEmails);
+          this.dataService.setDisplayedMessages(filteredEmails);
         });
         break;
       case 3:
         this.emailService.tagged.subscribe((taggedEmails) => {
-          this.emailService.setCollectionMessages(taggedEmails);
-          this.emailService.setDisplayedMessages(taggedEmails)
+          this.dataService.setCollectionMessages(taggedEmails);
+          this.dataService.setDisplayedMessages(taggedEmails)
         });
         break;
 
       case 4:
         this.emailService.sentMail.subscribe((sentEmails) => {
-          this.emailService.setCollectionMessages(sentEmails);
-          this.emailService.setDisplayedMessages(sentEmails);
+          this.dataService.setCollectionMessages(sentEmails);
+          this.dataService.setDisplayedMessages(sentEmails);
         });
         break;
       case 5:
         this.emailService.drafts.subscribe((draftEmails) => {
-          this.emailService.setCollectionMessages(draftEmails);
-          this.emailService.setDisplayedMessages(draftEmails)
+          this.dataService.setCollectionMessages(draftEmails);
+          this.dataService.setDisplayedMessages(draftEmails)
         });
         break;
       case 6:
         this.emailService.trash.subscribe((trashEmails) => {
-          this.emailService.setCollectionMessages(trashEmails);
-          this.emailService.setDisplayedMessages(trashEmails)
+          this.dataService.setCollectionMessages(trashEmails);
+          this.dataService.setDisplayedMessages(trashEmails)
         });
         break;
     }

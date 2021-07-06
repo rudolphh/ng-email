@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EmailService } from '../email.service';
+import { EmailService } from '../_services/email.service';
 import { Email } from '../_models/email.model';
+import { DataService } from '../_services/data.service';
 
 @Component({
   selector: 'app-messages',
@@ -14,14 +15,16 @@ export class MessagesComponent implements OnInit {
   subscription !: Subscription;
   emails : Email[] = [];
 
-  constructor(private emailService: EmailService){}
+  constructor(private emailService: EmailService, private dataService: DataService){}
 
   ngOnInit(): void {
-    this.emailService.displayedMessages$.subscribe((emails) => this.emails = emails);
+    this.dataService.displayedMessages$.subscribe((emails) => {
+      this.emails = emails;
+    });
   }
 
   setSelectedMessage(message: Email) {
-    this.emailService.selectMessage(message);
+    this.dataService.selectMessage(message);
   }
 
   ngOnDestroy(): void {

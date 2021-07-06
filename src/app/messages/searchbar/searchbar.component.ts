@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { EmailService } from 'src/app/email.service';
 import { Email } from 'src/app/_models/email.model';
 
-import { debounceTime, map } from 'rxjs/operators';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
+import { DataService } from 'src/app/_services/data.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -13,12 +13,14 @@ import { debounceTime, map } from 'rxjs/operators';
 export class SearchbarComponent implements OnInit {
   searchText: FormControl = new FormControl();
 
-  constructor(private emailService: EmailService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
 
+    this.dataService.resetSearchText$.subscribe(() => { this.searchText.setValue('', { emitEvent: false })})
+
     this.searchText.valueChanges.pipe(debounceTime(300)).subscribe((query) => {
-      this.emailService.collectionMessages$
+      this.dataService.collectionMessages$
         .pipe(
           map((emails: Email[]) => {
             var filteredEmails = emails.filter((email) =>
@@ -32,7 +34,7 @@ export class SearchbarComponent implements OnInit {
           })
         )
         .subscribe((emails) => {
-          this.emailService.setDisplayedMessages(emails);
+          this.dataService.setDisplayedMessages(emails);
         });
     });
   }
