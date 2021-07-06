@@ -22,41 +22,41 @@ export class NavComponent implements OnInit {
 
     switch(this.activeIndex) {
       case 1:
-        this.emailService.inbox.subscribe((emails) => {
-          this.emailService.setOriginalList(emails);
-          this.emailService.newSearch(emails)
+        this.emailService.inbox.subscribe((inboxEmails) => {
+          this.emailService.setCollectionMessages(inboxEmails);
+          this.emailService.setDisplayedMessages(inboxEmails)
         });
         break;
       case 2:
-        this.emailService.inbox.subscribe((emails) => {
-          this.emailService.setOriginalList(emails);
-          var filteredEmails = emails.filter(email => email.important);
-          this.emailService.newSearch(filteredEmails);
+        this.emailService.inbox.subscribe((inboxEmails) => {
+          this.emailService.setCollectionMessages(inboxEmails);
+          var filteredEmails = inboxEmails.filter(email => email.important);
+          this.emailService.setDisplayedMessages(filteredEmails);
         });
         break;
       case 3:
-        this.emailService.tagged.subscribe((emails) => {
-          this.emailService.setOriginalList(emails);
-          this.emailService.newSearch(emails)
+        this.emailService.tagged.subscribe((taggedEmails) => {
+          this.emailService.setCollectionMessages(taggedEmails);
+          this.emailService.setDisplayedMessages(taggedEmails)
         });
         break;
 
       case 4:
-        this.emailService.sentMail.subscribe((emails) => {
-          this.emailService.setOriginalList(emails);
-          this.emailService.newSearch(emails);
+        this.emailService.sentMail.subscribe((sentEmails) => {
+          this.emailService.setCollectionMessages(sentEmails);
+          this.emailService.setDisplayedMessages(sentEmails);
         });
         break;
       case 5:
-        this.emailService.drafts.subscribe((emails) => {
-          this.emailService.setOriginalList(emails);
-          this.emailService.newSearch(emails)
+        this.emailService.drafts.subscribe((draftEmails) => {
+          this.emailService.setCollectionMessages(draftEmails);
+          this.emailService.setDisplayedMessages(draftEmails)
         });
         break;
       case 6:
-        this.emailService.trash.subscribe((emails) => {
-          this.emailService.setOriginalList(emails);
-          this.emailService.newSearch(emails)
+        this.emailService.trash.subscribe((trashEmails) => {
+          this.emailService.setCollectionMessages(trashEmails);
+          this.emailService.setDisplayedMessages(trashEmails)
         });
         break;
     }

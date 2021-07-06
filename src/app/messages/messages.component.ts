@@ -12,7 +12,6 @@ import { Email } from '../_models/email.model';
 export class MessagesComponent implements OnInit {
 
   subscription !: Subscription;
-
   emails : Email[] = [];
 
   constructor(private emailService: EmailService){}

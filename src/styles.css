@@ -63,12 +63,13 @@ body, html {
 }
 
 #user-msg {
-    margin-left: 10px;
+    margin-left: 15px;
     vertical-align: middle;
 }
 
 #user-img {
     width: 40px;
+    border: 1px solid white;
 }
 
 #email-list {

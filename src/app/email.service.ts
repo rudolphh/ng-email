@@ -11,12 +11,11 @@ export class EmailService {
   // properties
   private API_URL: string = 'http://localhost:3000';
 
+  private collectionMessagesSource$ = new BehaviorSubject<Email[]>([]);
+  collectionMessages$ = this.collectionMessagesSource$.asObservable();
+
   private displayedMessagesSource$ = new BehaviorSubject<Email[]>([]);
   displayedMessages$ = this.displayedMessagesSource$.asObservable();
-
-  private filteredMessagesSource$ = new BehaviorSubject<Email[]>([]);
-  filteredMessages$ = this.filteredMessagesSource$.asObservable();
-
 
   private messageSource$ = new BehaviorSubject<Email>({});
   currentMessage$ = this.messageSource$.asObservable();
@@ -27,8 +26,8 @@ export class EmailService {
   // methods
   constructor(private http: HttpClient){}
 
-  get filteredMessages() {
-    return this.filteredMessagesSource$.value;
+  get collectionMessages() {
+    return this.collectionMessagesSource$.value;
   }
 
   // http requests
@@ -57,13 +56,13 @@ export class EmailService {
     this.messageSource$.next(message)
   }
 
-  newSearch(messages: Email[]){
+  setDisplayedMessages(messages: Email[]){
     this.newSearch$.next(true);
     this.displayedMessagesSource$.next(messages);
   }
 
-  setOriginalList(messages: Email[]){
-    this.filteredMessagesSource$.next(messages);
+  setCollectionMessages(messages: Email[]){
+    this.collectionMessagesSource$.next(messages);
   }
 
 

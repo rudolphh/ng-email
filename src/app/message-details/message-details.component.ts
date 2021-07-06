@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { EmailService } from '../email.service';
 import { Email } from '../_models/email.model';
 
@@ -9,20 +8,22 @@ import { Email } from '../_models/email.model';
   styleUrls: ['./message-details.component.css'],
 })
 export class MessageDetailsComponent implements OnInit {
-  message$!: Observable<Email>;
   message!: Email;
 
   constructor(private emailService: EmailService) {}
 
   ngOnInit(): void {
+
     this.emailService.currentMessage$.subscribe(
       (message: Email) => (this.message = message)
     );
+
     this.emailService.isNewSearch$.subscribe((isNew) => {
       if (isNew) this.emailService.selectMessage({});
     });
   }
 
+  // helpers
   replaceBreaksWithParagraphs(input: string) {
     if (input) {
       input = this.filterEmpty(input.split('\n')).join('</p><p>');

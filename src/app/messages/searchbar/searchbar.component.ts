@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { EmailService } from 'src/app/email.service';
 import { Email } from 'src/app/_models/email.model';
 
-import { debounceTime, distinctUntilChanged, map, mergeMap } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-searchbar',
@@ -18,7 +18,7 @@ export class SearchbarComponent implements OnInit {
   ngOnInit(): void {
 
     this.searchText.valueChanges.pipe(debounceTime(300)).subscribe((query) => {
-      this.emailService.filteredMessages$
+      this.emailService.collectionMessages$
         .pipe(
           map((emails: Email[]) => {
             var filteredEmails = emails.filter((email) =>
@@ -32,7 +32,7 @@ export class SearchbarComponent implements OnInit {
           })
         )
         .subscribe((emails) => {
-          this.emailService.newSearch(emails);
+          this.emailService.setDisplayedMessages(emails);
         });
     });
   }
