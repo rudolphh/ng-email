@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Email } from 'src/app/_models/email.model';
 
-import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
+import { debounceTime, filter, map, switchMap, takeUntil } from 'rxjs/operators';
 import { DataService } from 'src/app/_services/data.service';
 
 @Component({
@@ -19,23 +19,21 @@ export class SearchbarComponent implements OnInit {
 
     this.dataService.resetSearchText$.subscribe(() => { this.searchText.setValue('', { emitEvent: false })})
 
-    this.searchText.valueChanges.pipe(debounceTime(300)).subscribe((query) => {
-      this.dataService.collectionMessages$
-        .pipe(
-          map((emails: Email[]) => {
-            var filteredEmails = emails.filter((email) =>
-              (
-                email.title?.toLowerCase() +
-                ' ' +
-                email.content?.toLowerCase()
-              ).includes(query.toLowerCase())
-            );
-            return filteredEmails;
-          })
-        )
-        .subscribe((emails) => {
-          this.dataService.setDisplayedMessages(emails);
-        });
+    this.searchText.valueChanges.pipe(debounceTime(300), switchMap((query) => {
+      return this.dataService.collectionMessages$
+      .pipe(
+        map((emails: Email[]) => {
+          var filteredEmails = emails.filter((email) =>
+            (email.title?.toLowerCase() + ' ' + email.content?.toLowerCase())
+            .includes(query.toLowerCase())
+          );
+          return filteredEmails;
+        })
+      )
+    }))
+    .subscribe((emails) => {
+      this.dataService.setDisplayedMessages(emails);
     });
+
   }
 }
