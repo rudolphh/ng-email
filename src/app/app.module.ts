@@ -8,6 +8,9 @@ import { NavComponent } from './nav/nav.component';
 import { MessagesModule } from './messages/messages.module';
 import { MessageDetailsModule } from './message-details/message-details.module';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { EmailData } from './message-data';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,8 @@ import { MessageDetailsModule } from './message-details/message-details.module';
     AppRoutingModule,
     HttpClientModule,
     MessagesModule,
-    MessageDetailsModule
+    MessageDetailsModule,
+    HttpClientInMemoryWebApiModule.forRoot(EmailData)
   ],
   providers: [],
   bootstrap: [AppComponent]

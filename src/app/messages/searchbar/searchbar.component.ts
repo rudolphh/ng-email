@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Email } from 'src/app/_models/email.model';
 
-import { debounceTime, filter, map, switchMap, takeUntil } from 'rxjs/operators';
+import { debounceTime, map, switchMap } from 'rxjs/operators';
 import { DataService } from 'src/app/_services/data.service';
 
 @Component({

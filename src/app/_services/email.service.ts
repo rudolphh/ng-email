@@ -8,7 +8,7 @@ import { Email } from "../_models/email.model";
 })
 export class EmailService {
 
-  private API_URL: string = 'http://localhost:3000';
+  private API_URL: string = 'api'//'http://localhost:3000';
 
   constructor(private http: HttpClient){}
 
@@ -21,7 +21,7 @@ export class EmailService {
   }
 
   get sentMail(): Observable<Email[]> {
-    return this.http.get<Email[]>(`${this.API_URL}/sent-mail`);
+    return this.http.get<Email[]>(`${this.API_URL}/sentmail`);
   }
 
   get drafts(): Observable<Email[]> {
