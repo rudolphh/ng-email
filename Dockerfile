@@ -1,5 +1,5 @@
 ### STAGE 1: Build ###
-FROM node:10-alpine AS buildyrz
+FROM node:14-alpine AS buildyrz
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
