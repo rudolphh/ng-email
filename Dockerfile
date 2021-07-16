@@ -2,7 +2,7 @@
 FROM node:14-alpine AS buildyrz
 WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install -g @angular/cli@11.1.4 && npm install
 COPY . .
 RUN npm run build
 
