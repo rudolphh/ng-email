@@ -109,6 +109,3 @@ export class EmailData implements InMemoryDbService {
     return { inbox, tagged, sentmail, drafts, trash };
   }
 }
-// happy one-year anniversary from santa barbara
-// thank you Lord
-// we're home
