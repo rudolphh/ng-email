@@ -18,7 +18,7 @@ export class MessageListComponent implements OnInit {
   selectedIndex : number = -1;
   today = new Date(Date.now()).toISOString();
 
-  constructor(private emailService: EmailService, private dataService: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.dataService.isNewSearch$.subscribe((isNew) => {

@@ -1,19 +1,52 @@
-<ng-container *ngIf="emails!.length > 0; else noResults ">
-  <div class="list-group" *ngFor="let email of emails; let i = index; trackBy: trackItem">
-    <a (click)="selectMessage(i, email)" [ngClass]="{ 'selectedMessage' : isSelected(i) }" class="list-group-item list-group-item-action flex-column align-items-start">
+<ng-container *ngIf="emails!.length > 0; else noResults">
+  <div
+    class="list-group"
+    *ngFor="let email of emails; let i = index; trackBy: trackItem"
+  >
+    <a
+      (click)="selectMessage(i, email)"
+      [ngClass]="{ selectedMessage: isSelected(i) }"
+      class="
+        list-group-item list-group-item-action
+        flex-column
+        align-items-start
+      "
+    >
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1">{{ email.title }} </h6>
-        <small>{{ isSameDay(email.date!, today) ? (email.date | date: 'shortTime') : ( email.date | date: 'shortDate') }}</small>
+        <h6 class="mb-1">{{ email.title }}</h6>
+        <small>{{
+          isSameDay(email.date!, today)
+            ? (email.date | date: "shortTime")
+            : (email.date | date: "shortDate")
+        }}</small>
       </div>
-      <p class="mb-1">{{ (email.content | slice:0:54) + (email.content!.length < 54 ? '' : ' ...') }}</p>
+      <p class="mb-1">
+        {{
+          (email.content | slice: 0:54) +
+            (email.content!.length < 54 ? "" : " ...")
+        }}
+      </p>
     </a>
   </div>
 </ng-container>
 <ng-template #noResults>
-  <hr style="margin-top: 30px">
-  <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px; font-style: italic; font-size: 14px;">
-    <i class="fa fa-search fa-2x" aria-hidden="true" style="margin-right: 15px; "></i>
+  <hr style="margin-top: 30px" />
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 15px;
+      font-style: italic;
+      font-size: 14px;
+    "
+  >
+    <i
+      class="fa fa-search fa-2x"
+      aria-hidden="true"
+      style="margin-right: 15px"
+    ></i>
     No Results Found
   </div>
-  <hr>
+  <hr />
 </ng-template>

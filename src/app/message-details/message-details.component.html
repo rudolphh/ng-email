@@ -4,7 +4,7 @@
 
   <div id="email-title-bar">
     <h4>{{ message.title }}</h4>
-    <i class="fa fa-trash"></i>
+    <a (click)="deleteMessage(message)"><i class="fa fa-trash"></i></a>
     <i class="fa fa-reply"></i>
     <i class="fa fa-ellipsis-h"></i>
   </div>

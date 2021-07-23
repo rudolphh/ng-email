@@ -11,7 +11,7 @@ import { DataService } from '../_services/data.service';
 export class MessageDetailsComponent implements OnInit {
   message!: Email;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private emailService: EmailService) {}
 
   ngOnInit(): void {
 
@@ -22,6 +22,10 @@ export class MessageDetailsComponent implements OnInit {
     this.dataService.isNewSearch$.subscribe((isNew) => {
       if (isNew) this.dataService.selectMessage({});
     });
+  }
+
+  deleteMessage(message: Email) {
+    this.emailService.deleteMessage(message.id!)
   }
 
   // helpers

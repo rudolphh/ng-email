@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Email } from "../_models/email.model";
+import { DataService } from "./data.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ import { Email } from "../_models/email.model";
 export class EmailService {
 
   private API_URL: string = 'api'//'http://localhost:3000';
+  something !: Observable<Email>;
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private dataService: DataService){}
 
   get inbox(): Observable<Email[]> {
     return this.http.get<Email[]>(`${this.API_URL}/inbox`);
@@ -30,6 +32,12 @@ export class EmailService {
 
   get trash(): Observable<Email[]> {
     return this.http.get<Email[]>(`${this.API_URL}/trash`);
+  }
+
+  deleteMessage(id: number) {
+    console.log(id);
+    return this.http.delete<Email>(`${this.API_URL}/inbox/${id}`)
+
   }
 
 
