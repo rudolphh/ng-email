@@ -27,6 +27,10 @@ export class DataService {
     this.messageSource$.next(message)
   }
 
+  deleteMessage(id: number) {
+    
+  }
+
   setDisplayedMessages(messages: Email[]){
     this.newSearch$.next(true);
     this.displayedMessagesSource$.next(messages);
