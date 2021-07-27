@@ -28,7 +28,8 @@ export class DataService {
   }
 
   deleteMessage(id: number) {
-    
+    let messages = this.displayedMessagesSource$.value;
+    this.setDisplayedMessages(messages.filter((message: Email) => message.id !== id))
   }
 
   setDisplayedMessages(messages: Email[]){

@@ -36,10 +36,11 @@ export class EmailService {
 
   deleteMessage(id: number) {
     console.log(id);
-    this.http.delete<Email>(`${this.API_URL}/inbox/${id}`).toPromise().then((data) => {
-      console.log('delete returns', data);
-    })
-    this.inbox.subscribe(data => { console.log(data); });
+    this.http.delete<Email>(`${this.API_URL}/inbox/${id}`).toPromise()
+      .then((data) => {
+        this.dataService.deleteMessage(id);
+      })
+      
   }
 
 
