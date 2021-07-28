@@ -22,46 +22,35 @@ export class NavComponent implements OnInit {
     this.activeIndex = index;
     this.dataService.resetSearchText();
 
-    switch(this.activeIndex) {
-      case 1:
-        this.emailService.inbox.subscribe((inboxEmails) => {
-          this.dataService.setCollectionMessages(inboxEmails);
-          this.dataService.setDisplayedMessages(inboxEmails)
-        });
-        break;
-      case 2:
-        this.emailService.inbox.subscribe((inboxEmails) => {
-          var filteredEmails = inboxEmails.filter(email => email.important);
-          this.dataService.setCollectionMessages(filteredEmails);
-          this.dataService.setDisplayedMessages(filteredEmails);
-        });
-        break;
-      case 3:
-        this.emailService.tagged.subscribe((taggedEmails) => {
-          this.dataService.setCollectionMessages(taggedEmails);
-          this.dataService.setDisplayedMessages(taggedEmails)
-        });
-        break;
+    this.emailService.emails.subscribe((inboxEmails) => {
 
-      case 4:
-        this.emailService.sentMail.subscribe((sentEmails) => {
-          this.dataService.setCollectionMessages(sentEmails);
-          this.dataService.setDisplayedMessages(sentEmails);
-        });
-        break;
-      case 5:
-        this.emailService.drafts.subscribe((draftEmails) => {
-          this.dataService.setCollectionMessages(draftEmails);
-          this.dataService.setDisplayedMessages(draftEmails)
-        });
-        break;
-      case 6:
-        this.emailService.trash.subscribe((trashEmails) => {
-          this.dataService.setCollectionMessages(trashEmails);
-          this.dataService.setDisplayedMessages(trashEmails)
-        });
-        break;
-    }
+      let filteredEmails;
+      switch(this.activeIndex) {
+        case 1:
+            filteredEmails = inboxEmails.filter(email => !email.draft && !email.sent && !email.trash);
+          break;
+        case 2:
+            filteredEmails = inboxEmails.filter(email => email.important && !email.trash);
+          break;
+        case 3:
+            filteredEmails = inboxEmails.filter(email => email.tagged);
+          break;
+        case 4:
+            filteredEmails = inboxEmails.filter(email => email.sent)
+          break;
+        case 5:
+            filteredEmails = inboxEmails.filter(email => email.draft)
+          break;
+        case 6:
+            filteredEmails = inboxEmails.filter(email => email.trash)
+          break;
+        default:
+          filteredEmails = inboxEmails.filter(email => email);
+      }
+
+      this.dataService.setCollectionMessages(filteredEmails);
+      this.dataService.setDisplayedMessages(filteredEmails);
+    });
   }
 
   isActive(index: number) {

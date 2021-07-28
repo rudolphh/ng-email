@@ -14,33 +14,36 @@ export class EmailService {
 
   constructor(private http: HttpClient, private dataService: DataService){}
 
-  get inbox(): Observable<Email[]> {
-    return this.http.get<Email[]>(`${this.API_URL}/inbox`);
+  get emails(): Observable<Email[]> {
+    return this.http.get<Email[]>(`${this.API_URL}/emails`);
   }
 
-  get tagged(): Observable<Email[]> {
-    return this.http.get<Email[]>(`${this.API_URL}/tagged`);
-  }
+  // get tagged(): Observable<Email[]> {
+  //   return this.http.get<Email[]>(`${this.API_URL}/tagged`);
+  // }
 
-  get sentMail(): Observable<Email[]> {
-    return this.http.get<Email[]>(`${this.API_URL}/sentmail`);
-  }
+  // get sentMail(): Observable<Email[]> {
+  //   return this.http.get<Email[]>(`${this.API_URL}/sentmail`);
+  // }
 
-  get drafts(): Observable<Email[]> {
-    return this.http.get<Email[]>(`${this.API_URL}/drafts`);
-  }
+  // get drafts(): Observable<Email[]> {
+  //   return this.http.get<Email[]>(`${this.API_URL}/drafts`);
+  // }
 
-  get trash(): Observable<Email[]> {
-    return this.http.get<Email[]>(`${this.API_URL}/trash`);
-  }
+  // get trash(): Observable<Email[]> {
+  //   return this.http.get<Email[]>(`${this.API_URL}/trash`);
+  // }
 
-  deleteMessage(id: number) {
-    console.log(id);
-    this.http.delete<Email>(`${this.API_URL}/inbox/${id}`).toPromise()
+  deleteMessage(message: Email) {
+    message.trash = true;
+    this.http.put(`${this.API_URL}/emails/${message.id}`, message).toPromise()
       .then((data) => {
-        this.dataService.deleteMessage(id);
-      })
-      
+        this.dataService.deleteMessage(message.id!)
+      });
+    // this.http.delete<Email>(`${this.API_URL}/emails/${id}`).toPromise()
+    //   .then((data) => {
+    //     this.dataService.deleteMessage(id);
+    //   })
   }
 
 

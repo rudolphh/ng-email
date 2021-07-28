@@ -6,4 +6,8 @@ export interface Email {
   title ?: string;
   content ?: string;
   important ?: boolean;
+  tagged ?: boolean;
+  sent ?: boolean;
+  draft ?: boolean;
+  trash ?: boolean;
 }

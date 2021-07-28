@@ -25,7 +25,7 @@ export class MessageDetailsComponent implements OnInit {
   }
 
   deleteMessage(message: Email) {
-    this.emailService.deleteMessage(message.id!)
+    this.emailService.deleteMessage(message)
   }
 
   // helpers

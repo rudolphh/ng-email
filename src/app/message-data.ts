@@ -3,7 +3,7 @@ import { Email } from './_models/email.model';
 
 export class EmailData implements InMemoryDbService {
   createDb(){
-    const inbox: Email[] = [
+    const emails: Email[] = [
       {
           "id": 1,
           "date": "2021-07-05T18:25:43.511Z",
@@ -66,12 +66,12 @@ export class EmailData implements InMemoryDbService {
           "title": "Blah blah",
           "content": "\"Friends. 'Hey you're poor.' 'Hey, your momma.' That's what friends do.\"\n\"You sheeted on me? When I specifically asked you not to?\"\n\"It just seems awfully nice.\"\n\"Reverse psychology is awesome. I don't know if you guys know about it, something stupid. Works like a charm.\"",
           "important": false
-      }
-    ];
+      },
+    // ];
 
-    const tagged : Email [] = [];
+    // const tagged : Email [] = [];
 
-    const sentmail : Email[] = [
+    // const sentmail : Email[] = [
       {
         "id": 9,
         "date": "2018-03-23T18:25:43.511Z",
@@ -79,7 +79,8 @@ export class EmailData implements InMemoryDbService {
         "from": "rudolpharthur@gmail.com",
         "title": "Give me my money back",
         "content": "Product sucked.\nCan I haz my money back?\nThank you have a nice day\n",
-        "important": false
+        "important": false,
+        "sent" : true
       },
       {
           "id": 11,
@@ -88,13 +89,14 @@ export class EmailData implements InMemoryDbService {
           "from": "rudolpharthur@gmail.com",
           "title": "PLEASE give me my money back",
           "content": "Another product sucked.\nCan I haz my money back?\nThank you have a nice day\n",
-          "important": false
-      }
-    ];
+          "important": false,
+          "sent" : true
+      },
+    // ];
 
-    const drafts : Email [] = [];
+    // const drafts : Email [] = [];
 
-    const trash : Email[] = [
+    // const trash : Email[] = [
       {
         "id": 13,
         "date": "2018-02-13T18:25:43.511Z",
@@ -102,10 +104,12 @@ export class EmailData implements InMemoryDbService {
         "from": "spammy@McSpammy.com",
         "title": "You won the lottery!",
         "content": "You won Rudy!\nClaim your winnings\nSend me money to process the claim.\n",
-        "important": false
+        "important": false,
+        "trash": true
       }
     ];
 
-    return { inbox, tagged, sentmail, drafts, trash };
+    // return { inbox, tagged, sentmail, drafts, trash };
+    return { emails }
   }
 }
