@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Email } from '../_models/email.model';
 import { DataService } from '../_services/data.service';
@@ -9,7 +9,7 @@ import { DataService } from '../_services/data.service';
   styleUrls: ['./messages.component.css']
 })
 
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
 
   subscription !: Subscription;
   emails : Email[] = [];

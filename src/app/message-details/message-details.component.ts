@@ -4,6 +4,7 @@ import { Email } from '../_models/email.model';
 import { DataService } from '../_services/data.service';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: '[app-message-details]',
   templateUrl: './message-details.component.html',
   styleUrls: ['./message-details.component.css'],
