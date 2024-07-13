@@ -16,19 +16,19 @@ export class EmailData implements InMemoryDbService {
       {
           "id": 2,
           "date": "2021-03-23T18:25:43.511Z",
-          "to": "taylor@lamarsoftware.io",
+          "to": "rudolpharthur@gmail.com",
           "from": "re-reply@officenbc.com",
-          "title": "Michael Scott Daily Quotes",
-          "content": "\"Friends joke with one another. 'Hey you're poor.' 'Hey, your momma's dead.' That's what friends do.\"\n\"It's a good thing Russia doesn't exist anymore.\"\n\"You cheated on me? When I specifically asked you not to?\"\n\"It just seems awfully mean. But sometimes, the ends justify the mean.\"\n\"Reverse psychology is an awesome tool. I don't know if you guys know about it, but, basically, you make someone think the opposite of what you believe, and that tricks them into doing something stupid. Works like a charm.\"",
+          "title": "Michael Scott Daily Jokes",
+          "content": "\"I told my girlfriend she drew her eyebrows too high.\"\n\"She seemed surprised.\"",
           "important": false
       },
       {
           "id": 3,
           "date": "2021-01-23T18:25:43.511Z",
           "to": "you@yourcompany.com",
-          "from": "taylor@lamarsoftware.io",
-          "title": "LaMar Software",
-          "content": "Learn how you can give us money by calling (209)322-7832.\nOur operators are standing by. Call Now!!!\nhttps://lamarsoftware.io",
+          "from": "ru@dus.io",
+          "title": "Rudus Software",
+          "content": "Learn how you can give us money by calling (209)322-7832.\nOur operators are standing by. Call Now!!!\nhttps://rudyah.com",
           "important": true
       },
       {
@@ -43,10 +43,10 @@ export class EmailData implements InMemoryDbService {
       {
           "id": 5,
           "date": "2020-03-23T18:25:43.511Z",
-          "to": "taylor@lamarsoftware.io",
+          "to": "rudolpharthur@gmail.com",
           "from": "re-reply@officenbc.com",
           "title": "Rudy H Daily Quotes",
-          "content": "\"I like code. 'Code likes me' 'Hey, your momma's code.' That's what friends do.\"\n\"It's a good thing Rome doesn't exist anymore.\"\n\"You cheated on me? When I specifically asked you not to?\"\n\"It just seems awfully mean. But sometimes, the ends justify the mean.\"\n\"Reverse psychology is an awesome tool. I don't know if you guys know about it, but, basically, you make someone think the opposite of what you believe, and that tricks them into doing something stupid. Works like a charm.\"",
+          "content": "\"I like code. 'Code likes me'\"\n\"Okay sometimes it doesn't\"\n\"But I still like it\"\n\"Okay sometimes it does seem awfully mean.\"\n\"But its nice when it works like a charm.\"",
           "important": false
       },
       {
@@ -61,10 +61,10 @@ export class EmailData implements InMemoryDbService {
       {
           "id": 7,
           "date": "2019-03-23T18:25:43.511Z",
-          "to": "taylor@lamarsoftware.io",
+          "to": "rudolpharthur@gmail.com",
           "from": "re-reply@officenbc.com",
           "title": "Blah blah",
-          "content": "\"Friends. 'Hey you're poor.' 'Hey, your momma.' That's what friends do.\"\n\"You sheeted on me? When I specifically asked you not to?\"\n\"It just seems awfully nice.\"\n\"Reverse psychology is awesome. I don't know if you guys know about it, something stupid. Works like a charm.\"",
+          "content": "\"Friends. That's what friends do.\"\n\"They help each other out\"\n\"It is awfully nice.\"\n\"Be a friend.\"",
           "important": false
       },
     // ];
@@ -77,8 +77,8 @@ export class EmailData implements InMemoryDbService {
         "date": "2018-03-23T18:25:43.511Z",
         "to": "support@amazon.com",
         "from": "rudolpharthur@gmail.com",
-        "title": "Give me my money back",
-        "content": "Product sucked.\nCan I haz my money back?\nThank you have a nice day\n",
+        "title": "Late return",
+        "content": "Ummmm Hi, me again.\nI forgot to return yesterday\nCan I still return?\n",
         "important": false,
         "sent" : true
       },
@@ -87,8 +87,8 @@ export class EmailData implements InMemoryDbService {
           "date": "2018-02-13T18:25:43.511Z",
           "to": "support@amazon.com",
           "from": "rudolpharthur@gmail.com",
-          "title": "PLEASE give me my money back",
-          "content": "Another product sucked.\nCan I haz my money back?\nThank you have a nice day\n",
+          "title": "When is Prime day",
+          "content": "I prefer prime day to any other day\nPrime day soon.\nThanks.\n",
           "important": false,
           "sent" : true
       },
